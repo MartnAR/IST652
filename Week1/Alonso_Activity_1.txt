@@ -1,0 +1,29 @@
+Activity 1
+1. What will the following code print out?
+x = 43
+x = x + 1
+print(x)
+
+Answer: b) 44
+
+2. Write a sequence of statements into the Python interpreter to prompt the user for hours and rate per hour, printing each one, and then to 
+   compute gross pay as (hours * rate). Your output lines should look something like: 
+
+hours = input("Enter hours: ")
+rate = input("Enter rate: ")
+pay = (float(hours) * float(rate))
+print("Pay: ", pay)
+
+Enter hours: 35
+Enter rate: 2.75
+Pay:  96.25
+
+3. Assume that we execute the following assignment statements:
+    width = 17
+    height = 12.0
+
+For each of the following expressions, write the value of the expression and its type.
+1. width/2 -> 8.5, type: float
+2. width/2.0 -> 8.5, type: float
+3. height/3 -> 4.0, type: float
+4. 1 + 2 * 5 -> 11, type: int

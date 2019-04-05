@@ -1,0 +1,41 @@
+List and Loops Activity
+
+1. Suppose that there is a list of strings defined, called samples. Define the list so that some strings have only one or two characters and
+   some strings have more. Write a loop that prints out all the strings whose length is greater than two. 
+
+Code: 
+# Create a list of ten items 
+samples = ['oh', 'trout', 'yelich', 'harper', 'ryu', 'choi', 'ohtani', 'at', 'sb', 'warp']
+
+# Print strings that have a length greater than 2
+for i in samples: 
+    if len(i) > 2:
+        print(i)
+
+Result: 
+trout
+yelich
+harper
+ryu
+choi
+ohtani
+warp
+
+2. Again, suppose that there is a list of strings defined, called samples. Define the list so that some strings have only one or two characters
+   and some strings have more than five. Write a loop that prints out all the strings whose length is greater than two and whose length is less
+   than five. 
+
+
+Code: 
+# Create a list of ten items 
+samples = ['oh', 'trout', 'yelich', 'harper', 'ryu', 'choi', 'ohtani', 'at', 'sb', 'warp']
+
+# Print only the strings that have more than 2 characters and less than 5
+for i in samples:
+    if len(i) > 2 and len(i) < 5:
+        print(i)
+
+Results: 
+ryu
+choi
+warp
