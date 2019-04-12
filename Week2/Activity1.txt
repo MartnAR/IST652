@@ -1,0 +1,16 @@
+>>> # Initiate a string
+... mp = "Today is a Great Day"
+>>> 
+>>> # Convert string to lowercase, uppercase, and remove spaces
+... mp.lower()
+'today is a great day'
+>>> mp.upper()
+'TODAY IS A GREAT DAY'
+>>> mp.strip()
+'Today is a Great Day'
+>>> 
+>>> # Find if there's a word starting with X or if there is a Z in the string
+... mp.startswith("X")
+False
+>>> mp.find("Z")
+-1
