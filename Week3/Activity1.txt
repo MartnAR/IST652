@@ -1,0 +1,48 @@
+#### Code
+
+# Read file; Calculate averages and maximum
+# Created by: Martin Alonso
+# Date created: 2019-04-12
+
+# Purpose: reads a txt file, calculates the maximum and average values for numeric columns
+
+# Import numpy for mean calculation, import pandas for dataframe manipulation. 
+import numpy as np 
+import pandas as pd
+
+# Prompts user to enter the file name. 
+to_open = input("What file do you want to open? ")
+
+# Attempts to open the file; if file is not in directory, returns an error. 
+try: 
+    NBAfile = open(to_open, "r")
+except: 
+    print("File is not in directory.")
+
+# Cleans file data using list comprehension. 
+NBAlist = [line.strip().split("\t") for line in NBAfile.readlines()]
+NBAlist2 = [list(filter(None, x)) for x in NBAlist]
+
+# Converts list to DataFrame; adds column headers and converts attendance and ticket prices to int and float. 
+NBAdf = pd.DataFrame(NBAlist2)
+NBAdf.columns = ['team', 'attendance', 'ticket_price']
+NBAdf['attendance'] = NBAdf.attendance.astype(int)
+NBAdf['ticket_price'] = NBAdf.ticket_price.astype(float)
+
+# Calculate maximum attendance and ticket price
+max_attendance = max(NBAdf['attendance'])
+max_ticket_price = max(NBAdf['ticket_price'])
+
+# Calculate average attendance and ticket price
+avg_attendance = np.mean(NBAdf['attendance'])
+avg_ticket_price = np.mean(NBAdf['ticket_price'])
+
+# Returns the values 
+print("The largest crowd-size was {:d}, while the average crowd-size was {:.2f}.".format(max_attendance, avg_attendance))
+print("The most expensive ticket cost ${:.2f}, while the average ticket cost ${:.2f}.".format(max_ticket_price, avg_ticket_price))
+
+#### Results
+(base) python Activity1.py
+What file do you want to open? NBA-attendance-1989.txt
+The largest crowd-size was 26160, while the average crowd-size was 15710.70.
+The most expensive ticket cost $29.18, while the average ticket cost $18.57.
