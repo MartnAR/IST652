@@ -1,0 +1,62 @@
+### Code ###
+
+# NBA file read
+# Created by: Martin Alonso
+# Date created: 2019-04-06
+# Purpose: read NBA attendance and ticket price text file, store in list, clean white space, and display results
+
+# Import pandas package to load text file
+import re
+import os 
+
+os.chdir("C:/Users/malon/Documents/Syracuse University/IST 652 Scripting for Data Analysis/IST652-Scripting-for-Data-Analysis/Week2")
+
+# Load text file
+NBAfile = open("NBA-Attendance-1989.txt", "r")
+
+# Initiate count object empty list to store text data
+count = 0
+NBAlist = []
+
+# Iterate over every line in the text file, returning a list of lists
+for line in NBAfile: 
+    count += 1
+    line_clean = line.strip()
+    text_line = line_clean.split()
+    NBAlist.append(text_line)
+
+# Print the number of lines read and the team for each line
+print("Number of teams: {:d}".format(count))
+for team in NBAlist: 
+    print("Team: ", team)
+
+### Results ###
+(base) C:\Users\malon\Documents\Syracuse University\IST 652 Scripting for Data Analysis\IST652-Scripting-for-Data-Analysis\Week2>python NBAfileRead.py
+Number of teams: 27
+Team:  ['Atlanta', '13993', '20.06']
+Team:  ['Boston', '14916', '22.54']
+Team:  ['Charlotte', '23901', '17']
+Team:  ['Chicago', '18404', '21.98']
+Team:  ['Cleveland', '16969', '19.63']
+Team:  ['Dallas', '16868', '17.05']
+Team:  ['Denver', '12668', '17.4']
+Team:  ['Detroit', '21454', '24.42']
+Team:  ['Golden_State', '15025', '17.04']
+Team:  ['Houston', '15846', '17.56']
+Team:  ['Indiana', '12885', '13.77']
+Team:  ['LA_Clippers', '11869', '21.95']
+Team:  ['LA_Lakers', '17378', '29.18']
+Team:  ['Miami', '15008', '17.6']
+Team:  ['Milwaukee', '16088', '14.08']
+Team:  ['Minnesota', '26160', '10.92']
+Team:  ['New_Jersey', '12160', '13.31']
+Team:  ['New_York', '17815', '22.7']
+Team:  ['Orlando', '15606', '20.47']
+Team:  ['Philadelphia', '14017', '19.04']
+Team:  ['Phoenix', '14114', '16.59']
+Team:  ['Portland', '12884', '22.19']
+Team:  ['Sacramento', '17014', '16.96']
+Team:  ['San_Antonio', '14722', '16.79']
+Team:  ['Seattle', '12244', '18.11']
+Team:  ['Utah', '12616', '18.41']
+Team:  ['Washington', '11565', '14.55']
