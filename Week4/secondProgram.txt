@@ -1,0 +1,55 @@
+#### Code
+# Calculate numbers
+# Created by: Martin Alonso
+# Date created: 2019-04-16
+# Purpose: prompt user for numbers until user says 'done!'. Calculates total numbers, number of numbers inputted, and average numbers entered. 
+
+import numpy as np 
+
+numbers = []
+
+# Take input from user
+while True:
+	number = input("Please insert a number:")
+	
+	try:
+		number_flt = float(number)
+		numbers.append(number_flt)
+	except:
+		if number == "done!":
+			len_number = len(numbers)
+			sum_number = np.sum(numbers)
+			avg_number = np.mean(numbers)
+			print("You inserted {} numbers. The sum of these is {} and their average is {}.".format(len_number, sum_number, avg_number))
+			break
+		else:
+			print("Please insert a number or 'done!' if you're finished.")
+			
+
+#### Results
+Running C:\Users\malon\Documents\Syracuse University\IST 652 Scripting for Data Analysis\IST652\Week4\SecondProgram.py
+Please insert a number:
+five
+
+Please insert a number or 'done!' if you're finished.
+Please insert a number:
+5
+
+Please insert a number:
+4
+
+Please insert a number:
+3
+
+Please insert a number:
+zero
+
+Please insert a number or 'done!' if you're finished.
+Please insert a number:
+two
+
+Please insert a number or 'done!' if you're finished.
+Please insert a number:
+done!
+
+You inserted 3 numbers. The sum of these is 12.0 and their average is 4.0.
