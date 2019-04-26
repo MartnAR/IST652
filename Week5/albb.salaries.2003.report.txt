@@ -1,0 +1,4 @@
+American League Baseball players average salary in 2003
+ for players earning less than $310,000
+
+Average salary = $62,574.28
