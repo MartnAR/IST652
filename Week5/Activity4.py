@@ -11,7 +11,7 @@
 
 import csv
 
-infile = 'albb.salaries.2003.csv'
+infile = 'albb.salaries.2003.tsv'
 
 # create new empty list
 playersList = []
@@ -49,20 +49,39 @@ print ("Read", len(playersList), "player data")
 
 # Write a report text file with a title and the average of the salaries
 # First create an output file name
-outfile1 = infile.replace('csv', '') + 'report.txt'
+outfile1 = infile.replace('tsv', '') + 'pitcher report.txt'
 # open the file for writing
 fout1 = open(outfile1, 'w')
 
 # write title at top of file
-fout1.write("American League Baseball players average salary in 2003\n for players earning less than $310,000\n\n")
+fout1.write("American League Baseball pitchers average salary in 2003\n\n")
 
 # comput the average salary over all players
 total_salary = 0.0
 for player in playersList:
-  if player['sal'] < 310000:
+  if player['position'] == 'Pitcher':
     total_salary += player['sal']
 average_salary = total_salary / len(playersList)
 
 # write a report line as a string to the file
-fout1.write('Average salary = ${:,.2f}'.format(average_salary))
+fout1.write('Average pitcher salary = ${:,.2f}'.format(average_salary))
 fout1.close()
+
+# Write a file with all the players who made under $310,000.
+# We write a comma separated file, using the csv writer to quote the player names with commas
+# first create an output file name
+outfile2 = infile.replace('tsv','') + 'pitcher.tsv'
+
+# open the file
+with open(outfile2, 'w', newline='') as csvfileout:
+    # create a csv writer for a comman sep file, with quoting as needed
+    ALwriter = csv.writer(csvfileout, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+    # write the header row as a list of column labels
+    ALwriter.writerow(['Player', 'Team', 'Salary'])
+    for player in playersList:
+        # select the players with salary over 1 million
+        if (player['position'] == 'Pitcher'):
+            # write the player as a list of data items
+            ALwriter.writerow([player['name'], player['team'], player['sal']])
+
+csvfileout.close()

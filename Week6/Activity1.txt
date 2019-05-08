@@ -1,0 +1,35 @@
+>>> ### Parse website
+... # Load libraries
+... from urllib import request
+>>> from bs4 import BeautifulSoup
+>>>
+>>> # Website to parse
+... tofugu = 'https://www.tofugu.com/japanese/sensei/'
+>>>
+>>> # Obtain response from website; parse through BeautifulSoup
+... response = request.urlopen(tofugu)
+>>> html = response.read().decode('utf8')
+>>> htmlsoup = BeautifulSoup(html, 'html.parser')
+>>>
+>>> # Get five tags from the parsed website
+... site_title = htmlsoup.title
+>>> print(site_title)
+<title>The Meaning of Sensei: Go Beyond "Teacher/Master"</title>
+>>>
+>>> site_headers2 = htmlsoup.find_all("h2")
+>>> print(site_headers2[0].text)
+What Does "Sensei" Mean?
+>>>
+>>> site_paragraphs = htmlsoup.find_all("p")
+>>> print(site_paragraphs[1])
+<p>Thanks to the popularity of sports like judo and karate, 先生 (せんせい) is a Japanese word people all over the world use in place of "teacher." If you <a href="/japanese/surviving-japanese-class/">take Japanese classes at a school or online</a>, you probably call your teacher "sensei" there too.</p>
+>>>
+>>> site_lists = htmlsoup.find_all("li")
+>>> print(site_lists[10:15])
+[<li><a href="#academics" id="markdown-toc-academics">Academics</a></li>, <li><a href="#people-with-specialized-skills" id="markdown-toc-people-with-specialized-skills">People with Specialized Skills</a></li>, <li><a href="#artists" id="markdown-toc-artists">Artists</a></li>, <li><a href="#athletes" id="markdown-toc-athletes">Athletes</a></li>, <li><a href="#certain-professionals" id="markdown-toc-certain-professionals">Certain Professionals</a> <ul>
+<li><a href="#professionals-with-specialized-knowledge" id="markdown-toc-professionals-with-specialized-knowledge">Professionals with Specialized Knowledge</a></li>
+<li><a href="#politicians" id="markdown-toc-politicians">Politicians</a></li>
+<li><a href="#professional-artists-and-creators" id="markdown-toc-professional-artists-and-creators">Professional Artists and Creators</a></li>
+<li><a href="#religious-leaders" id="markdown-toc-religious-leaders">Religious Leaders</a></li>
+</ul>
+</li>]

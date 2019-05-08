@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re 
 
+
 # File to be imported 
 file = input("Which file do you wish to import?: \n")
 
@@ -37,7 +38,7 @@ try:
 
     # Prints number of columns changed to object type and list of column names. 
     print("The following {} columns are id columns: ".format(len(id_list)), id_list)
-
+    
     # Counts number of files added. 
     new_file_count = 0
     
@@ -78,6 +79,16 @@ try:
     
     # Prints first five observations of new data frame
     print(df.head())
+
+    # Group shot and goal data per items in id_list and divide by 60
+    for i in range(len(id_list)):
+        calculate = df.groupby(id_list[i])[['goals', 'shots', 'timeOnIce']].sum().reset_index()
+        calculate['goals_60'] = calculate['goals'] * 60/calculate['timeOnIce']
+        calculate['shots_60'] = calculate['shots'] * 60/calculate['timeOnIce']
+        file_name = id_list[i] + 'per 60.csv'
+        calculate.to_csv(file_name, index=False)
+        
+    print('Exporting shots and goals per 60 minutes for each team and player')
 
 except: 
     print("File not in directory. Please move file to directory.")
